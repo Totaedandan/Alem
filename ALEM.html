@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентация: Проект Alem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1A38;
+            color: #E0E0E0;
+        }
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid #2a3a5e;
+            background: linear-gradient(145deg, #0a1024, #0D1A38, #1a2b52);
+        }
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+        .backdrop-blur-sm {
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+        }
+        /* Custom animation for elements */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title Slide -->
+    <section class="slide">
+        <div class="slide-content fade-in text-center">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-8 md:gap-12 mb-8">
+                <!-- Alem Logo -->
+                <div class="flex items-center gap-3">
+                    <svg class="w-16 h-16 md:w-20 md:h-20 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="text-4xl md:text-5xl font-bold">Alem</span>
+                </div>
+                <!-- Respublica Logo -->
+                <div class="flex items-center gap-3">
+                     <svg class="w-16 h-16 md:w-20 md:h-20 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" >
+                        <path d="M3 12l2-2 4 4 6-6 4 4 2-2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-4xl md:text-5xl font-bold">Respublica</span>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">Проект «Alem»</h1>
+            <h2 class="text-2xl md:text-3xl text-teal-300 mb-6">AI-CoPilot для Законодателя</h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">Политика, основанная на данных. Будущее, созданное вместе.</p>
+            <div class="text-base text-gray-400">
+                <p>Инициатор: Байтасов Толеби</p>
+                <p>Дата: 19.06.2025</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: The Problem -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+            <h1 class="text-4xl lg:text-5xl font-bold text-center mb-4 text-blue-300">Законотворчество — это «черный ящик»</h1>
+            <p class="text-lg text-center text-gray-300 mb-12 max-w-4xl mx-auto">Сегодня мы принимаем законы, не зная их реальных последствий. Это приводит к системным проблемам:</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 text-left">
+                <!-- Black Box Icon -->
+                <div class="flex-shrink-0">
+                    <div class="w-48 h-48 bg-gray-900 border-2 border-dashed border-gray-600 rounded-2xl flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4M4 7v10l8 4M4 7l8 4" /></svg>
+                        <span class="text-5xl font-bold text-gray-600 absolute">?</span>
+                    </div>
+                </div>
+                <!-- Problems List -->
+                <div class="space-y-6 max-w-lg">
+                    <div class="flex items-start gap-4 p-4 bg-gray-800/20 rounded-lg">
+                        <svg class="w-8 h-8 text-red-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Непрозрачность</h3>
+                            <p class="text-gray-300">Граждане не понимают, как и почему принимаются законы. Это рождает недоверие.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-gray-800/20 rounded-lg">
+                        <svg class="w-8 h-8 text-yellow-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Непрогнозируемость</h3>
+                            <p class="text-gray-300">Негативные эффекты проявляются спустя годы, когда уже поздно что-то менять.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-gray-800/20 rounded-lg">
+                        <svg class="w-8 h-8 text-orange-400 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clip-rule="evenodd" /></svg>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Реактивность</h3>
+                            <p class="text-gray-300">Власть «тушит пожары», а не предотвращает их, работая постфактум.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <p class="text-lg text-center text-blue-200 mt-12 bg-black/20 p-4 rounded-lg border border-gray-700 inline-block"><strong>Вывод:</strong> Мы принимаем законы вслепую, а страна годами живет с последствиями.</p>
+        </div>
+    </section>
+
+    <!-- Slide 3: The Revolutionary Solution -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+            <h1 class="text-4xl lg:text-5xl font-bold text-center mb-4 text-teal-300">Представляем «Alem»</h1>
+            <h2 class="text-2xl lg:text-3xl font-semibold text-center text-white mb-10">Заң шығарушыға арналған AI-CoPilot</h2>
+            
+            <div class="relative w-full max-w-2xl mx-auto my-12 h-64">
+                <!-- Data streams -->
+                <span class="absolute top-1/2 left-0 -translate-y-1/2 text-gray-500">10101</span>
+                <span class="absolute top-1/4 left-10 text-gray-600">Σ(x)</span>
+                 <span class="absolute top-3/4 left-16 text-gray-500">[▓▓]</span>
+                <!-- Brain SVG -->
+                <svg class="absolute w-64 h-64 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-teal-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+                    <path d="M9.5 3.5c1.5-1 3.5-1 5 0M14.5 20.5c-1.5 1-3.5 1-5 0M20 9.5c1 1.5 1 3.5 0 5M4 14.5c-1-1.5-1-3.5 0-5"/>
+                    <path d="M12 16a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM4.2 8.3a8 8 0 0111.3-6.2M4.2 15.7a8 8 0 0011.3 6.2M19.8 8.3a8 8 0 00-11.3-6.2M19.8 15.7a8 8 0 01-11.3 6.2"/>
+                </svg>
+                 <!-- Graph Output -->
+                <svg class="absolute top-1/2 right-0 -translate-y-1/2 h-24 w-48 text-green-400" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 0 48 L 5 45 C 10 42, 20 36, 30 30 C 40 24, 50 18, 60 15 C 70 12, 80 12, 90 10 L 100 8" stroke="currentColor" stroke-width="3" />
+                    <path d="M 95 3 L 100 8 L 95 13" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <p class="text-lg text-center text-gray-300 max-w-4xl mx-auto mb-6">Это первая в мире AI-платформа, которая показывает будущее законов <strong>ДО</strong> их принятия.</p>
+            <p class="text-xl text-center font-semibold text-teal-200 bg-black/20 p-4 rounded-lg border border-gray-700 inline-block">«Alem» перестает гадать — он начинает считать.</p>
+            <p class="text-lg text-center text-gray-300 max-w-4xl mx-auto mt-6">Мы превращаем законотворчество из искусства предположений в точную, основанную на данных науку.</p>
+        </div>
+    </section>
+
+    <!-- Slide 4: How It Works? -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+             <header class="text-center mb-10 md:mb-16">
+                <h1 class="text-4xl lg:text-5xl font-bold text-blue-300">Как это работает?</h1>
+                <h2 class="text-xl lg:text-2xl text-gray-300 mt-2">Двухконтурная система: Синергия власти и общества</h2>
+            </header>
+            <main>
+                <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 md:gap-4">
+                    <div class="bg-gray-800/30 border border-teal-500/50 rounded-2xl p-6 w-full md:w-5/12 backdrop-blur-sm shadow-2xl shadow-teal-500/10">
+                        <h3 class="text-xl font-bold text-center mb-5 text-teal-300">Контур 1: AI-CoPilot (Для депутатов)</h3>
+                        <div class="space-y-4 text-gray-300 text-left">
+                            <div class="flex items-start gap-4"><span class="bg-teal-400 text-teal-900 rounded-full h-7 w-7 flex items-center justify-center font-bold flex-shrink-0 mt-1">1</span><p><strong class="font-semibold text-white">Загрузка:</strong> Депутат вносит текст законопроекта в систему.</p></div>
+                            <div class="flex items-start gap-4"><span class="bg-teal-400 text-teal-900 rounded-full h-7 w-7 flex items-center justify-center font-bold flex-shrink-0 mt-1">2</span><p><strong class="font-semibold text-white">Анализ ИИ:</strong> «Alem» моделирует экономические и социальные последствия, выявляет риски.</p></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center w-full md:w-auto">
+                         <svg class="w-12 h-12 md:w-16 md:h-16 text-gray-500 transform md:transform-none rotate-90" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" /></svg>
+                    </div>
+                    <div class="bg-gray-800/30 border border-blue-500/50 rounded-2xl p-6 w-full md:w-5/12 backdrop-blur-sm shadow-2xl shadow-blue-500/10">
+                        <h3 class="text-xl font-bold text-center mb-5 text-blue-300">Контур 2: Общественная песочница (Для граждан)</h3>
+                         <div class="space-y-4 text-gray-300 text-left">
+                            <div class="flex items-start gap-4"><span class="bg-blue-400 text-blue-900 rounded-full h-7 w-7 flex items-center justify-center font-bold flex-shrink-0 mt-1">3</span><p><strong class="font-semibold text-white">Публикация:</strong> Упрощенная аналитика с инфографикой появляется на портале.</p></div>
+                            <div class="flex items-start gap-4"><span class="bg-blue-400 text-blue-900 rounded-full h-7 w-7 flex items-center justify-center font-bold flex-shrink-0 mt-1">4</span><p><strong class="font-semibold text-white">Участие:</strong> Граждане обсуждают, голосуют и вносят свои предложения.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative w-full max-w-3xl mx-auto mt-6 h-16">
+                     <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 600 70" preserveAspectRatio="none">
+                        <defs><marker id="arrowhead-feedback" markerWidth="10" markerHeight="7" refX="9.5" refY="3.5" orient="auto" class="text-blue-400"><polygon points="0 0, 10 3.5, 0 7" fill="currentColor" /></marker></defs>
+                        <path d="M 580 35 C 580 80, 20 80, 20 35" stroke="url(#feedback-gradient)" stroke-width="2" fill="none" marker-start="url(#arrowhead-feedback)"/><linearGradient id="feedback-gradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3b82f6;" /><stop offset="100%" style="stop-color:#2dd4bf;" /></linearGradient>
+                     </svg>
+                     <p class="absolute bottom-[-5px] left-1/2 -translate-x-1/2 text-sm md:text-base text-blue-300 whitespace-nowrap bg-[#0D1A38] px-2">Обратная связь и народное мнение</p>
+                </div>
+            </main>
+            <footer class="mt-16 md:mt-20 text-center">
+                <p class="text-lg sm:text-xl text-gray-200 bg-black/20 rounded-lg p-4 inline-block border border-gray-700"><strong class="font-semibold text-white">Результат:</strong> Депутаты получают не только расчеты, но и реальный голос народа.</p>
+            </footer>
+        </div>
+    </section>
+
+    <!-- Slide 5: Demonstration in Action -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+            <h1 class="text-4xl lg:text-5xl font-bold text-center mb-4 text-blue-300">Демонстрация в действии</h1>
+            <p class="text-lg text-center text-gray-300 mb-12 max-w-4xl mx-auto">Пример: Что, если изменить розничный налог?</p>
+            <div class="bg-gray-900/50 border border-gray-700 rounded-2xl p-6 md:p-8 backdrop-blur-sm shadow-2xl max-w-5xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Request Panel -->
+                    <div class="w-full md:w-1/2 border-b-2 md:border-b-0 md:border-r-2 border-gray-600 border-dashed pb-8 md:pb-0 md:pr-8">
+                        <h3 class="text-xl font-bold text-center mb-5 text-teal-300">ЗАПРОС В «Alem»:</h3>
+                        <div class="bg-gray-800 rounded-lg p-4 text-left">
+                            <p class="font-mono text-sm text-gray-300"><strong class="text-white">Законопроект:</strong> «Снизить ставку розничного налога для МСБ с 4% до 2%»</p>
+                        </div>
+                    </div>
+                    <!-- Analysis Panel -->
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-xl font-bold text-center mb-5 text-blue-300">РЕЗУЛЬТАТ АНАЛИЗА (за 5 секунд):</h3>
+                        <div class="space-y-3 text-left">
+                            <p class="flex items-center gap-2"><span class="text-green-400 font-bold text-xl">[+]</span><strong class="text-white mr-1">Экономика:</strong> Высвободится ~80 млрд тг у бизнеса</p>
+                            <p class="flex items-center gap-2"><span class="text-red-400 font-bold text-xl">[-]</span><strong class="text-white mr-1">Бюджет:</strong> Поступления снизятся на ~75 млрд тг</p>
+                            <p class="flex items-center gap-2"><span class="text-green-400 font-bold text-xl">[+]</span><strong class="text-white mr-1">Социум:</strong> Позитивно коснется 120 000 ИП и ТОО</p>
+                            <p class="flex items-center gap-2"><span class="text-yellow-400 font-bold text-xl">[!]</span><strong class="text-white mr-1">Риск:</strong> Возможно дробление крупного бизнеса</p>
+                            <p class="flex items-center gap-2"><span class="text-blue-400 font-bold text-xl"></span><strong class="text-white mr-1">Народное мнение:</strong> 78% предпринимателей "ЗА", но просят расширить список</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-lg text-center text-teal-200 mt-12 bg-black/20 p-4 rounded-lg border border-gray-700 inline-block">Это превращает политические дебаты в предметный разговор на языке цифр.</p>
+        </div>
+    </section>
+
+    <!-- Slide 6: Strength in the People -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+            <h1 class="text-4xl lg:text-5xl font-bold text-center mb-4 text-teal-300">Сила в народе</h1>
+            <p class="text-lg text-center text-gray-300 mb-12 max-w-4xl mx-auto">Каждый гражданин — соавтор закона</p>
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+                <!-- Mobile Mockup -->
+                <div class="flex-shrink-0 w-full max-w-sm">
+                    <div class="bg-gray-900 border-8 border-gray-700 rounded-3xl p-2">
+                        <div class="bg-gradient-to-br from-[#0a1024] to-[#1a2b52] rounded-2xl p-4 h-96 overflow-y-auto">
+                           <h2 class="font-bold text-lg text-center text-blue-300 mb-2">Обсуждение Закона</h2>
+                           <p class="text-xs text-center text-gray-400 mb-4">О Розничном налоге</p>
+                           <!-- Infographic element -->
+                           <div class="bg-blue-900/30 p-3 rounded-lg mb-3">
+                                <p class="text-sm font-semibold text-white">Прозрачная инфографика</p>
+                                <div class="w-full bg-gray-600 rounded-full h-2.5 my-2"><div class="bg-blue-400 h-2.5 rounded-full" style="width: 78%"></div></div>
+                                <p class="text-xs text-gray-300">Сложные законы объясняются простым языком.</p>
+                           </div>
+                            <!-- Idea rating element -->
+                           <div class="bg-teal-900/30 p-3 rounded-lg mb-3">
+                                <p class="text-sm font-semibold text-white">Рейтинг идей</p>
+                                <p class="text-xs text-gray-300 mt-1">▲ 1,2k - "Расширить на сферу услуг"</p>
+                                <p class="text-xs text-gray-300 mt-1">▲ 845 - "Добавить налоговый вычет"</p>
+                           </div>
+                           <!-- Voting element -->
+                            <div class="bg-green-900/30 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white">«Сигнальное» голосование</p>
+                                <p class="text-lg font-bold text-green-300 text-center mt-2">78% ЗА</p>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Features List -->
+                 <div class="space-y-6 max-w-lg text-left">
+                    <p class="text-xl text-gray-200">Портал «Alem» — это не просто сайт. Это инструмент прямого влияния:</p>
+                    <div class="flex items-start gap-4"><svg class="w-7 h-7 text-blue-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg><div><h3 class="text-xl font-bold text-white">Прозрачная инфографика</h3><p class="text-gray-300">Сложные законы объясняются простым языком.</p></div></div>
+                    <div class="flex items-start gap-4"><svg class="w-7 h-7 text-teal-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" /></svg><div><h3 class="text-xl font-bold text-white">Рейтинг идей</h3><p class="text-gray-300">Лучшие предложения от граждан автоматически поднимаются в топ.</p></div></div>
+                    <div class="flex items-start gap-4"><svg class="w-7 h-7 text-green-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><div><h3 class="text-xl font-bold text-white">«Сигнальное» голосование</h3><p class="text-gray-300">Дает четкое понимание общественных настроений.</p></div></div>
+                </div>
+            </div>
+             <p class="text-lg text-center text-teal-200 mt-12 bg-black/20 p-4 rounded-lg border border-gray-700 inline-block">Мы возвращаем гражданам чувство сопричастности к управлению страной.</p>
+        </div>
+    </section>
+
+    <!-- Slide 7: Strategic Value -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+             <h1 class="text-4xl lg:text-5xl font-bold text-center mb-12 text-blue-300">Почему «Alem» — это победа?</h1>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto text-left">
+                <div class="bg-gray-800/30 border border-gray-700 p-6 rounded-2xl flex items-start gap-5">
+                    <svg class="w-12 h-12 text-yellow-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9 9 0 119 0zM16.5 18.75a9 9 0 00-9 0m9 0c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                    <div><h3 class="text-2xl font-bold text-white mb-2">Неоспоримое преимущество</h3><p class="text-gray-300">Наши инициативы подкреплены данными, а не лозунгами.</p></div>
+                </div>
+                <div class="bg-gray-800/30 border border-gray-700 p-6 rounded-2xl flex items-start gap-5">
+                    <svg class="w-12 h-12 text-purple-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.25c-5.508 0-10.096 4.49-10.096 10.096s4.588 10.096 10.096 10.096c.652 0 1.29-.055 1.908-.157l.583-3.468z" /></svg>
+                    <div><h3 class="text-2xl font-bold text-white mb-2">Революционный PR</h3><p class="text-gray-300">Мы становимся партией, которая заглянула в будущее. Это новость мирового уровня.</p></div>
+                </div>
+                 <div class="bg-gray-800/30 border border-gray-700 p-6 rounded-2xl flex items-start gap-5">
+                    <svg class="w-12 h-12 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9a9 9 0 119 0zM16.5 18.75a9 9 0 00-9 0m9 0c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                    <div><h3 class="text-2xl font-bold text-white mb-2">Настоящее доверие</h3><p class="text-gray-300">Мы не говорим об открытости — мы ее создаем.</p></div>
+                </div>
+                <div class="bg-gray-800/30 border border-gray-700 p-6 rounded-2xl flex items-start gap-5">
+                    <svg class="w-12 h-12 text-teal-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m18 0h-1.5m-15 0a7.5 7.5 0 0115 0m-15 0H3m15 0h-1.5m-15 0a7.5 7.5 0 0115 0m-15 0H3m15 0h-1.5" /></svg>
+                    <div><h3 class="text-2xl font-bold text-white mb-2">Компетентность и качество</h3><p class="text-gray-300">Мы предлагаем стране не просто идеи, а выверенные, работающие решения.</p></div>
+                </div>
+             </div>
+        </div>
+    </section>
+    
+    <!-- Slide 8: Roadmap -->
+    <section class="slide">
+        <div class="slide-content fade-in">
+             <h1 class="text-4xl lg:text-5xl font-bold text-center mb-12 text-teal-300">Дорожная карта</h1>
+             <div class="relative w-full max-w-6xl mx-auto">
+                 <!-- Timeline line -->
+                 <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-700 -translate-y-1/2"></div>
+                 <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 -translate-y-1/2 bg-gradient-to-r from-teal-500 to-blue-500 " style="width: 66%;"></div>
+
+                 <div class="flex flex-col md:flex-row justify-between items-start gap-8 relative">
+                     <!-- Phase 1 -->
+                     <div class="w-full md:w-1/3 text-center p-6 border-2 border-teal-500 border-dashed rounded-xl bg-gray-900/50">
+                        <div class="text-sm text-teal-300 font-bold mb-2">Фаза 1</div>
+                        <h3 class="text-xl font-bold text-white mb-2">MVP (9 месяцев)</h3>
+                        <p class="text-gray-300">Создание и запуск внутреннего контура «AI-CoPilot» для экспертов партии.</p>
+                     </div>
+                     <!-- Phase 2 -->
+                     <div class="w-full md:w-1/3 text-center p-6 border-2 border-blue-500 border-dashed rounded-xl bg-gray-900/50">
+                        <div class="text-sm text-blue-300 font-bold mb-2">Фаза 2</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Beta (6 месяцев)</h3>
+                        <p class="text-gray-300">Запуск публичного портала «Общественная песочница» для всех граждан.</p>
+                     </div>
+                     <!-- Phase 3 -->
+                     <div class="w-full md:w-1/3 text-center p-6 border-2 border-gray-600 border-dashed rounded-xl bg-gray-900/50">
+                        <div class="text-sm text-gray-400 font-bold mb-2">Фаза 3</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Масштаб (Постоянно)</h3>
+                        <p class="text-gray-300">Превращение «Alem» в национальный стандарт для всего госаппарата.</p>
+                     </div>
+                 </div>
+             </div>
+             <p class="text-lg text-center text-teal-200 mt-16 bg-black/20 p-4 rounded-lg border border-gray-700 inline-block">У нас есть не только мечта, но и четкий план ее воплощения.</p>
+        </div>
+    </section>
+
+    <!-- Slide 9: Our Vision -->
+    <section class="slide !bg-cover !bg-center" style="background-image: linear-gradient(rgba(13, 26, 56, 0.85), rgba(13, 26, 56, 0.95)), url('https://images.unsplash.com/photo-1596389053361-59a356b7ebaA?q=80&w=2070&auto=format&fit=crop');">
+        <div class="slide-content fade-in text-center bg-black/30 backdrop-blur-sm p-8 md:p-12 rounded-2xl">
+            <h1 class="text-4xl lg:text-5xl font-bold mb-6 text-teal-200">Создадим будущее вместе</h1>
+            <div class="max-w-4xl mx-auto space-y-4 text-lg text-gray-200">
+                <p>Проект «Alem» — это не просто IT-платформа.</p>
+                <p>Это наш шанс перейти от декларации принципов к их реальному воплощению.</p>
+                <p>Это возможность построить систему управления, которой можно доверять.</p>
+                <p class="font-bold text-xl text-white mt-4">Это наше наследие для нового, справедливого Казахстана.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 10: Q&A -->
+    <section class="slide">
+        <div class="slide-content fade-in text-center">
+             <h1 class="text-5xl lg:text-7xl font-extrabold text-blue-300 mb-4">Рахмет!</h1>
+             <h2 class="text-4xl lg:text-5xl font-bold text-gray-300 mb-12">Спасибо за внимание!</h2>
+             <div class="flex items-center justify-center gap-6 mb-8">
+                 <span class="text-2xl font-bold">Alem</span>
+                 <span class="text-gray-500">&</span>
+                 <span class="text-2xl font-bold">Respublica</span>
+             </div>
+             <p class="text-lg text-gray-400">Вопросы и ответы</p>
+        </div>
+    </section>
+
+</body>
+</html>

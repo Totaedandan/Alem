@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — Alem. Respublica Analytics</title>
+    <style>
+        /* Общие стили для всех страниц */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-dark-primary: #1a1c23;
+            --bg-dark-secondary: #252831;
+            --bg-dark-tertiary: #313541;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --accent-primary: #00aaff;
+            --accent-secondary: #00e6a3;
+            --border-color: #3a3f4b;
+            --danger-color: #ff4d4d;
+            --warning-color: #ffcc00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark-primary);
+            color: var(--text-primary);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Стили для страницы входа */
+        .login-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-dark-primary);
+        }
+
+        .login-box {
+            background-color: var(--bg-dark-secondary);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .login-box h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .login-box h1 .logo-accent {
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+        
+        .login-box p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-dark-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .login-form input:focus {
+            border-color: var(--accent-primary);
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent-primary);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #0088cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h1>Alem <span class="logo-accent">Analytics</span></h1>
+            <p>Платформа для поддержки принятия решений</p>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username">Логин</label>
+                    <input type="text" id="username" value="user@respublica.kz" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" value="************" required>
+                </div>
+                <button type="submit">Войти в систему</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Здесь будут другие страницы, скрытые по умолчанию -->
+    <div id="appContainer" style="display: none; width: 100%;">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>Alem <span class="logo-accent">Analytics</span></h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="nav-link active" data-page="dashboard"><i class="icon-dashboard"></i> <span>Панель управления</span></a></li>
+                <li><a href="#" class="nav-link" data-page="analytics"><i class="icon-analytics"></i> <span>Глубокий анализ</span></a></li>
+                <li><a href="#" class="nav-link" data-page="reports"><i class="icon-reports"></i> <span>Отчеты и контент</span></a></li>
+                <li><a href="#" class="nav-link" data-page="alerts"><i class="icon-alerts"></i> <span>Оповещения</span></a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://placehold.co/40x40/00aaff/FFFFFF?text=B" alt="User Avatar">
+                    <div class="user-info">
+                        <span class="user-name">Т. Байтасов</span>
+                        <span class="user-role">Администратор</span>
+                    </div>
+                </div>
+                 <a href="#" id="logoutButton" class="logout-button"><i class="icon-logout"></i></a>
+            </div>
+        </nav>
+        <main class="main-content">
+            <div id="dashboard" class="page active">
+                <header class="page-header">
+                    <h2>Панель управления</h2>
+                    <p>Обзор ключевых показателей и рисков на 30 июня 2025 г.</p>
+                </header>
+                <div class="content-grid">
+                    <div class="card kpi-card">
+                        <h4>Индекс медийного присутствия</h4>
+                        <div class="kpi-value">7.8 <span class="kpi-trend positive">+0.3</span></div>
+                        <p>Относительно прошлой недели</p>
+                    </div>
+                    <div class="card kpi-card">
+                        <h4>Тональность упоминаний</h4>
+                        <div class="kpi-value">62% <span class="kpi-trend positive">+5%</span></div>
+                        <p>Доля позитивных/нейтральных</p>
+                    </div>
+                    <div class="card kpi-card">
+                        <h4>Вовлеченность аудитории</h4>
+                        <div class="kpi-value">12.4K <span class="kpi-trend negative">-1.1K</span></div>
+                        <p>Реакции на публикации</p>
+                    </div>
+                    <div class="card chart-card large-card">
+                         <h4>Динамика тональности (последние 30 дней)</h4>
+                         <div class="chart-container">
+                            <canvas id="tonalityChart"></canvas>
+                         </div>
+                    </div>
+                    <div class="card map-card large-card">
+                        <h4>Карта рисков Казахстана</h4>
+                        <img src="https://placehold.co/800x400/252831/a0a0a0?text=Карта+рисков+Казахстана" alt="Карта рисков Казахстана">
+                    </div>
+                </div>
+            </div>
+            <div id="analytics" class="page">
+                <header class="page-header">
+                    <h2>Глубокий анализ</h2>
+                    <p>Детальное исследование данных и выявление скрытых тенденций</p>
+                </header>
+                <div class="content-grid-analytics">
+                    <div class="card chart-card">
+                        <h4>Конкурентная разведка</h4>
+                        <div class="chart-container">
+                            <canvas id="competitionChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="card chart-card">
+                        <h4>Семантический анализ</h4>
+                        <div class="chart-container">
+                            <canvas id="sentimentChart"></canvas>
+                        </div>
+                    </div>
+                     <div class="card chart-card full-width-card">
+                        <h4>Предиктивный анализ трендов</h4>
+                        <div class="chart-container">
+                            <canvas id="trendsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="reports" class="page">
+                 <header class="page-header">
+                    <h2>Отчеты и контент</h2>
+                    <p>Автоматизация создания отчетов и текстовых материалов</p>
+                </header>
+                <div class="content-grid-reports">
+                    <div class="card full-width-card">
+                        <h4>Генератор отчетов</h4>
+                        <table class="reports-table">
+                            <thead>
+                                <tr>
+                                    <th>Название отчета</th>
+                                    <th>Дата создания</th>
+                                    <th>Тип</th>
+                                    <th>Статус</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Еженедельный отчет по медиа-активности</td>
+                                    <td>29.06.2025</td>
+                                    <td>Медиа</td>
+                                    <td><span class="status completed">Завершен</span></td>
+                                    <td><button class="btn-secondary">Скачать</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Анализ социальных рисков в Карагандинской обл.</td>
+                                    <td>27.06.2025</td>
+                                    <td>Региональный</td>
+                                    <td><span class="status completed">Завершен</span></td>
+                                    <td><button class="btn-secondary">Скачать</button></td>
+                                </tr>
+                                 <tr>
+                                    <td>Сравнительный анализ конкурентов</td>
+                                    <td>25.06.2025</td>
+                                    <td>Конкуренты</td>
+                                    <td><span class="status completed">Завершен</span></td>
+                                    <td><button class="btn-secondary">Скачать</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card full-width-card">
+                        <h4>AI-Копирайтер</h4>
+                        <div class="copilot-container">
+                            <div class="copilot-input">
+                                <label for="copilotTopic">Введите тему для генерации текста:</label>
+                                <input type="text" id="copilotTopic" placeholder="Например: тезисы к законопроекту о цифровизации">
+                                <button id="generateTextBtn" class="btn-primary">Сгенерировать</button>
+                            </div>
+                            <div class="copilot-output">
+                                <label>Сгенерированный текст:</label>
+                                <textarea id="generatedText" readonly placeholder="Здесь появится результат..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="alerts" class="page">
+                 <header class="page-header">
+                    <h2>Центр оповещений</h2>
+                    <p>Мониторинг потенциальных информационных угроз и рисков</p>
+                </header>
+                <div class="alerts-container">
+                    <div class="alert-card high-priority">
+                        <div class="alert-header">
+                            <span class="priority-tag high">Высокий приоритет</span>
+                            <span class="alert-time">30 минут назад</span>
+                        </div>
+                        <div class="alert-body">
+                            <h5>Резкий всплеск негатива в соцсетях</h5>
+                            <p>Зафиксирован рост негативных комментариев на 300% по теме "Налоговая реформа" в Facebook и Telegram.</p>
+                        </div>
+                    </div>
+                    <div class="alert-card medium-priority">
+                        <div class="alert-header">
+                            <span class="priority-tag medium">Средний приоритет</span>
+                            <span class="alert-time">4 часа назад</span>
+                        </div>
+                        <div class="alert-body">
+                            <h5>Публикация от лидера мнений</h5>
+                            <p>Известный блогер @AybekT опубликовал критический пост о деятельности регионального филиала. Потенциальный охват - 200 тыс.</p>
+                        </div>
+                    </div>
+                    <div class="alert-card low-priority">
+                        <div class="alert-header">
+                            <span class="priority-tag low">Низкий приоритет</span>
+                            <span class="alert-time">1 день назад</span>
+                        </div>
+                        <div class="alert-body">
+                            <h5>Анализ упоминаемости</h5>
+                            <p>Снижение доли позитивных упоминаний на 2% в региональных новостных порталах.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <style>
+    /* Стили для основного приложения (после входа) */
+    .sidebar {
+        min-width: 260px;
+        width: 260px;
+        background-color: var(--bg-dark-secondary);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--border-color);
+        transition: width 0.3s ease;
+    }
+
+    .sidebar-header {
+        margin-bottom: 40px;
+    }
+
+    .sidebar-header h3 {
+        font-size: 22px;
+        color: var(--text-primary);
+    }
+    .sidebar-header .logo-accent {
+        color: var(--accent-primary);
+    }
+    .sidebar-menu {
+        list-style: none;
+        flex-grow: 1;
+    }
+
+    .sidebar-menu li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-menu .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-weight: 500;
+    }
+
+    .sidebar-menu .nav-link:hover {
+        background-color: var(--bg-dark-tertiary);
+        color: var(--text-primary);
+    }
+
+    .sidebar-menu .nav-link.active {
+        background-color: var(--accent-primary);
+        color: #fff;
+    }
+    
+    .sidebar-menu .nav-link i {
+        margin-right: 15px;
+        font-size: 20px;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-color: currentColor;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+    }
+    
+    /* Иконки */
+    .icon-dashboard { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>'); }
+    .icon-analytics { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>'); }
+    .icon-reports { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>'); }
+    .icon-alerts { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>'); }
+    .icon-logout { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>'); }
+    
+
+    .sidebar-footer {
+        padding-top: 20px;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+    }
+
+    .user-profile img {
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .user-name {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .user-role {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+    
+    .logout-button {
+      color: var(--text-secondary);
+      padding: 8px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .logout-button:hover {
+      background-color: var(--bg-dark-tertiary);
+      color: var(--danger-color);
+    }
+    
+    .logout-button i {
+      display: block;
+      width: 20px;
+      height: 20px;
+      background-color: currentColor;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+    }
+
+    .main-content {
+        flex-grow: 1;
+        padding: 30px;
+        overflow-y: auto;
+    }
+
+    .page {
+        display: none;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    .page-header {
+        margin-bottom: 30px;
+    }
+    
+    .page-header h2 {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    .page-header p {
+        color: var(--text-secondary);
+        font-size: 16px;
+    }
+    
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    
+    .card {
+        background-color: var(--bg-dark-secondary);
+        padding: 25px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .large-card {
+        grid-column: span 2;
+    }
+
+    .kpi-card h4 {
+        color: var(--text-secondary);
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    .kpi-card .kpi-value {
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    
+    .kpi-card .kpi-trend {
+        font-size: 16px;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+
+    .kpi-trend.positive { color: var(--accent-secondary); }
+    .kpi-trend.negative { color: var(--danger-color); }
+
+    .kpi-card p {
+        color: var(--text-secondary);
+        font-size: 14px;
+    }
+    
+    .chart-card h4 {
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    /* FIX: Added a wrapper for charts to constrain their height */
+    .chart-container {
+        position: relative;
+        height: 350px; /* You can adjust this height */
+    }
+
+    .map-card h4 {
+        margin-bottom: 15px;
+    }
+
+    .map-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+    }
+    
+    /* Стили для страницы аналитики */
+    .content-grid-analytics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+    .full-width-card {
+        grid-column: 1 / -1;
+    }
+    
+    /* Стили для страницы отчетов */
+     .content-grid-reports {
+        display: grid;
+        gap: 25px;
+    }
+    .reports-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .reports-table th, .reports-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .reports-table th {
+        color: var(--text-secondary);
+        font-weight: 600;
+    }
+    
+    .status {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .status.completed {
+        background-color: rgba(0, 230, 163, 0.1);
+        color: var(--accent-secondary);
+    }
+    
+    .btn-primary {
+        background-color: var(--accent-primary);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #0088cc;
+    }
+    .btn-secondary {
+        background-color: var(--bg-dark-tertiary);
+        color: var(--text-primary);
+        padding: 8px 15px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+    .btn-secondary:hover {
+        background-color: #4a4f5a;
+    }
+
+    .copilot-container {
+        display: flex;
+        gap: 25px;
+    }
+    .copilot-input, .copilot-output {
+        flex: 1;
+    }
+    .copilot-container label {
+        display: block;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+    #copilotTopic {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--bg-dark-tertiary);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-primary);
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+    
+    #generatedText {
+        width: 100%;
+        height: 150px;
+        padding: 12px;
+        background-color: var(--bg-dark-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-secondary);
+        font-size: 14px;
+        resize: vertical;
+    }
+
+    /* Стили для страницы оповещений */
+    .alerts-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .alert-card {
+      background-color: var(--bg-dark-secondary);
+      border-left: 5px solid;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+    .alert-card.high-priority { border-color: var(--danger-color); }
+    .alert-card.medium-priority { border-color: var(--warning-color); }
+    .alert-card.low-priority { border-color: var(--accent-primary); }
+    
+    .alert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .priority-tag {
+        font-weight: 600;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+    .priority-tag.high { color: var(--danger-color); background-color: rgba(255, 77, 77, 0.1); }
+    .priority-tag.medium { color: var(--warning-color); background-color: rgba(255, 204, 0, 0.1); }
+    .priority-tag.low { color: var(--accent-primary); background-color: rgba(0, 170, 255, 0.1); }
+    
+    .alert-time {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    
+    .alert-body h5 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    
+    .alert-body p {
+      color: var(--text-secondary);
+    }
+    </style>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Симуляция входа
+            const loginForm = document.getElementById('loginForm');
+            const loginPage = document.getElementById('loginPage');
+            const appContainer = document.getElementById('appContainer');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                loginPage.style.display = 'none';
+                appContainer.style.display = 'flex';
+                // Инициализируем графики после "входа"
+                initCharts();
+            });
+            
+            // Выход из системы
+            const logoutButton = document.getElementById('logoutButton');
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                appContainer.style.display = 'none';
+                loginPage.style.display = 'flex';
+            });
+
+            // Навигация по страницам
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // AI Копирайтер
+            const generateTextBtn = document.getElementById('generateTextBtn');
+            const generatedText = document.getElementById('generatedText');
+            const copilotTopic = document.getElementById('copilotTopic');
+
+            generateTextBtn.addEventListener('click', function() {
+                if (copilotTopic.value.trim() === '') {
+                    generatedText.value = 'Пожалуйста, введите тему.';
+                    return;
+                }
+                
+                generatedText.value = 'Генерация текста...';
+                setTimeout(() => {
+                    generatedText.value = `Ключевые тезисы по теме: "${copilotTopic.value}"\n\n1. **Обоснование актуальности:** Внедрение цифровых решений является ключевым фактором для повышения прозрачности и эффективности государственного управления, что напрямую соответствует стратегическим целям партии «Respublica».\n\n2. **Основные положения:** Предлагается создать единую цифровую платформу для гражданских обращений, что позволит сократить сроки рассмотрения и исключить человеческий фактор.\n\n3. **Ожидаемый результат:** Повышение доверия граждан к институтам власти, сокращение бюрократических процедур и создание прецедента для дальнейшей цифровой трансформации в стране.`;
+                }, 1500);
+            });
+
+
+            // Инициализация графиков
+            function initCharts() {
+                // FIX: Removed `maintainAspectRatio: false` from options to prevent infinite height
+                const commonChartOptions = {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(240, 240, 240, 0.8)' // Legend text color
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: 'rgba(240, 240, 240, 0.8)' },
+                            grid: { color: 'rgba(58, 63, 75, 0.5)' }
+                        },
+                        x: {
+                            ticks: { color: 'rgba(240, 240, 240, 0.8)' },
+                             grid: { color: 'rgba(58, 63, 75, 0.5)' }
+                        }
+                    }
+                };
+            
+                // График 1: Динамика тональности
+                const tonalityCtx = document.getElementById('tonalityChart').getContext('2d');
+                if (window.tonalityChart instanceof Chart) {
+                    window.tonalityChart.destroy();
+                }
+                window.tonalityChart = new Chart(tonalityCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Неделя 1', 'Неделя 2', 'Неделя 3', 'Неделя 4'],
+                        datasets: [{
+                            label: 'Позитив',
+                            data: [45, 55, 50, 58],
+                            borderColor: 'rgba(0, 230, 163, 1)',
+                            backgroundColor: 'rgba(0, 230, 163, 0.1)',
+                            tension: 0.4,
+                            fill: true,
+                        }, {
+                            label: 'Нейтрал',
+                            data: [25, 20, 28, 22],
+                            borderColor: 'rgba(0, 170, 255, 1)',
+                             backgroundColor: 'rgba(0, 170, 255, 0.1)',
+                            tension: 0.4,
+                             fill: true,
+                        }, {
+                            label: 'Негатив',
+                            data: [30, 25, 22, 20],
+                            borderColor: 'rgba(255, 77, 77, 1)',
+                             backgroundColor: 'rgba(255, 77, 77, 0.1)',
+                            tension: 0.4,
+                             fill: true,
+                        }]
+                    },
+                    options: {...commonChartOptions}
+                });
+
+                // График 2: Конкурентная разведка
+                 const competitionCtx = document.getElementById('competitionChart').getContext('2d');
+                 if (window.competitionChart instanceof Chart) {
+                    window.competitionChart.destroy();
+                }
+                window.competitionChart = new Chart(competitionCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Партия А', 'Партия Б', 'Партия В', 'Respublica'],
+                        datasets: [{
+                            label: 'Медиа-присутствие (пункты)',
+                            data: [65, 59, 80, 78],
+                            backgroundColor: [
+                                'rgba(255, 204, 0, 0.7)',
+                                'rgba(255, 77, 77, 0.7)',
+                                'rgba(100, 100, 100, 0.7)',
+                                'rgba(0, 170, 255, 0.7)'
+                            ],
+                        }]
+                    },
+                     options: {...commonChartOptions}
+                });
+
+                // График 3: Семантический анализ
+                const sentimentCtx = document.getElementById('sentimentChart').getContext('2d');
+                if (window.sentimentChart instanceof Chart) {
+                    window.sentimentChart.destroy();
+                }
+                window.sentimentChart = new Chart(sentimentCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Доверие', 'Надежда', 'Тревога', 'Конструктив', 'Критика'],
+                        datasets: [{
+                            label: 'Общественное мнение',
+                            data: [65, 59, 45, 75, 50],
+                            fill: true,
+                            backgroundColor: 'rgba(0, 170, 255, 0.2)',
+                            borderColor: 'rgb(0, 170, 255)',
+                            pointBackgroundColor: 'rgb(0, 170, 255)',
+                        }]
+                    },
+                    options: {
+                        ...commonChartOptions,
+                        scales: {
+                           r: {
+                               angleLines: { color: 'rgba(58, 63, 75, 0.5)' },
+                               grid: { color: 'rgba(58, 63, 75, 0.5)' },
+                               pointLabels: { color: 'rgba(240, 240, 240, 0.8)' },
+                               ticks: {
+                                 color: 'rgba(240, 240, 240, 0.8)',
+                                 backdropColor: 'rgba(0,0,0,0)'
+                               }
+                           }
+                        }
+                    }
+                });
+
+                 // График 4: Предиктивный анализ
+                const trendsCtx = document.getElementById('trendsChart').getContext('2d');
+                if (window.trendsChart instanceof Chart) {
+                    window.trendsChart.destroy();
+                }
+                 window.trendsChart = new Chart(trendsCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июнь', 'Июль (прогноз)'],
+                        datasets: [{
+                            label: 'Интерес к теме "Экология"',
+                            data: [30, 35, 45, 50, 60, 70, 85],
+                            borderColor: 'rgba(0, 230, 163, 1)',
+                            tension: 0.1,
+                        }, {
+                             label: 'Интерес к теме "Налоги"',
+                            data: [80, 75, 60, 55, 50, 48, 45],
+                            borderColor: 'rgba(255, 77, 77, 1)',
+                            tension: 0.1,
+                        }]
+                    },
+                    options: {...commonChartOptions}
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>
